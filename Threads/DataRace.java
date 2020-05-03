@@ -26,8 +26,6 @@ public class DataRace {
         static int itemCount = 0;
         public void run() {
             System.out.println("Shopper thread has started and started to help out/work");
-
-
             for (int i = 0 ; i < 1000000; i++) // try with 100, 1000
                 itemCount++;
         }
