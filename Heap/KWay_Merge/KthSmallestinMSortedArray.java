@@ -5,10 +5,10 @@ import java.util.PriorityQueue;
 
 public class KthSmallestinMSortedArray {
 
-    private static class Element {
+    private static class Node {
         int arrayIndex;
         int elementIndex;
-        public Element(int arrayIndex, int elementIndex ) {
+        public Node(int arrayIndex, int elementIndex ) {
             this.arrayIndex = arrayIndex;
             this.elementIndex = elementIndex;
         }
@@ -16,18 +16,18 @@ public class KthSmallestinMSortedArray {
 
     public static int findKthSmallest(List<Integer[]> lists, int k) {
 
-        PriorityQueue<Element> minHeap = new PriorityQueue<>((e1, e2) -> lists.get(e1.arrayIndex)[e1.elementIndex]
-                - lists.get(e2.arrayIndex)[e2.elementIndex]);
+        PriorityQueue<Node> minHeap = new PriorityQueue<>((n1, n2) -> lists.get(n1.arrayIndex)[n1.elementIndex]
+                - lists.get(n2.arrayIndex)[n2.elementIndex]);
 
         for (int i = 0; i < lists.size(); i++) {
-            minHeap.add(new Element(i, 0));
+            minHeap.add(new Node(i, 0));
         }
 
         int numberCount = 0 ;
         int result = 0 ;
         while (!minHeap.isEmpty()){
 
-            Element e = minHeap.poll();
+            Node e = minHeap.poll();
             result =  lists.get(e.arrayIndex)[e.elementIndex];
 
             numberCount++;
